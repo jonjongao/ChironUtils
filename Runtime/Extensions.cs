@@ -10,11 +10,6 @@ namespace Chiron.Skeleton
 {
 	public static class Extensions
 	{
-		public static SerializedHumanPose Serialize(this HumanPose pose)
-		{
-			return new SerializedHumanPose(ref pose);
-		}
-
 		public static string GetAbsoluteFilePath(string assetPath)
 		{
 			var dataPath = Application.dataPath;

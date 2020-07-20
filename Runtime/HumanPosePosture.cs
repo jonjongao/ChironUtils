@@ -15,7 +15,7 @@ namespace Chiron.Skeleton
 		public HumanPosePosture(string name, ref HumanPose pose)
 		{
 			this.name = name;
-			this.pose = pose.Serialize();
+			this.pose = new SerializedHumanPose(ref pose);
 		}
 
 		public HumanPosePosture(string name)
