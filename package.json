@@ -11,6 +11,9 @@
     "utility",
     "util"
   ],
+  "dependencies": {
+	"com.battleham.websocketsharpunity": "1.0.0"
+  },
   "author": {
     "name": "Jon Gao",
     "email": "jon@albertlan.com",

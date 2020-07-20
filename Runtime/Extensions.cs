@@ -14,5 +14,17 @@ namespace Chiron.Skeleton
 		{
 			return new SerializedHumanPose(ref pose);
 		}
+
+		public static string GetAbsoluteFilePath(string assetPath)
+		{
+			var dataPath = Application.dataPath;
+			dataPath = dataPath.Remove(dataPath.Length - 6, 6);
+			return dataPath + assetPath;
+		}
+
+		public static string ReadFirstLine(string path)
+		{
+			return File.ReadLines(path).First();
+		}
 	}
 }
