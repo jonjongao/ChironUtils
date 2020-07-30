@@ -1,0 +1,17 @@
+{
+    "name": "Albertlan.Chiron.Utils.Editor",
+    "references": [
+        "GUID:fabc59240e06c24459487f0a2efbf778"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
