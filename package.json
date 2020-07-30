@@ -1,6 +1,6 @@
 {
   "name": "com.albertlan.chiron.utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "Chiron Utils",
   "description": "Helper and shared scripts between server and client",
   "unity": "2019.4",
@@ -18,5 +18,7 @@
     "name": "Jon Gao",
     "email": "jon@albertlan.com",
     "url": "https://albertlan.com/"
-  }
+  },
+  "type": "library",
+  "hideInEditor": false
 }
