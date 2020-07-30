@@ -33,5 +33,23 @@ namespace Chiron.Skeleton
 			if (poses != null) poses.Clear();
 			samples = 0;
 		}
+
+		public HumanPoseVideo ShallowCopy()
+		{
+			return (HumanPoseVideo)this.MemberwiseClone();
+		}
+
+		public HumanPoseVideo DeepCopy()
+		{
+			HumanPoseVideo n = (HumanPoseVideo)this.MemberwiseClone();
+			n.keys = new List<long>();
+			n.poses = new List<SerializedHumanPose>();
+			for (int i = 0; i < samples; i++)
+			{
+				n.keys.Add(keys[i]);
+				n.poses.Add(poses[i].DeepCopy());
+			}
+			return n;
+		}
 	}
 }
