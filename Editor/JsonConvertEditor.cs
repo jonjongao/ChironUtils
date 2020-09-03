@@ -14,6 +14,7 @@ namespace Chiron.Skeleton
 		System.Type type;
 		System.Object raw;
 		SkeletonV1 result;
+		string log;
 
 		[MenuItem("Chiron/Convert to SkeletonV1")]
 		public static void ShowWindow()
@@ -44,7 +45,7 @@ namespace Chiron.Skeleton
 				if (fromFile != null &&
 					fromFile != o)
 				{
-					Debug.LogFormat("Change file");
+					log = string.Empty;
 					raw = null;
 					type = null;
 				}
@@ -57,8 +58,10 @@ namespace Chiron.Skeleton
 				switch (header)
 				{
 					case var _ when header.Equals(SkeletonV1.type):
+						log = "This file is already SkeletonV1 type";
 						break;
 					case var _ when header.Equals(HumanPoseVideo.type):
+						log = "HumanPoseVideo can't direct convert to SkeletonV1";
 						break;
 					default:
 						try
@@ -67,6 +70,8 @@ namespace Chiron.Skeleton
 							var c = JsonUtility.FromJson<Serialization<int, TransformLite>>(fromFile.text).ToDictionary();
 							if (string.IsNullOrEmpty(b.gestureName) == false)
 							{
+								log = "Type Gesture need convert via PoseRecognizer, " +
+									"Please use original PoseRecognizer component which hold those gesture data to convert from";
 							}
 							else if (c.Count > 0)
 							{
@@ -77,11 +82,16 @@ namespace Chiron.Skeleton
 						}
 						catch (System.ArgumentException)
 						{
-							Debug.LogErrorFormat("Not support type");
+							log = "Not support type";
 							fromFile = null;
 							break;
 						}
 				}
+			}
+
+			if(string.IsNullOrEmpty(log)==false)
+			{
+				EditorGUILayout.HelpBox(log, MessageType.Error);
 			}
 
 			if (fromFile != null && type != null)

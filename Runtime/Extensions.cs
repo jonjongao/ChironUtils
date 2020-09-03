@@ -166,7 +166,7 @@ namespace Chiron.Skeleton
 			sk.distanceShoulder = distShoulder;
 			return sk;
 		}
-		
+
 		public static void ApplyRelativedSkeleton(ref SkeletonV1 targetPose, Animator animator, Transform container, SkeletonV1 tpose,
 			JointMask mask, float deltaTime)
 		{
@@ -222,6 +222,8 @@ namespace Chiron.Skeleton
 				var pos = j.pos + def.pos;
 				//bone.rotation = Quaternion.Lerp(bone.rotation, rot, normalize);
 				bone.rotation = Quaternion.Lerp(bone.rotation, rot, deltaTime);
+
+				var posDiff = pos - bone.localPosition;
 				bone.localPosition = Vector3.Lerp(bone.localPosition, pos, deltaTime);
 			}
 		}
