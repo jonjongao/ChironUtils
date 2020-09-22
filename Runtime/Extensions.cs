@@ -7,10 +7,15 @@ using System.IO;
 using System.Linq;
 #endif
 
-namespace Chiron.Skeleton
+namespace Chiron
 {
 	public static class Extensions
 	{
+		public static T SeekComponent<T>(this Transform node, string name)
+		{
+			return node.Find(name).GetComponentInChildren<T>();
+		}
+
 		public static string GetAbsoluteFilePath(string assetPath)
 		{
 			var dataPath = Application.dataPath;
@@ -46,7 +51,10 @@ namespace Chiron.Skeleton
 			return (float)result;
 		}
 	}
+}
 
+namespace Chiron.Skeleton
+{
 	public static class Utility
 	{
 		public static SkeletonV1 CreateOverrideSkeleton(Animator animator, string name)
