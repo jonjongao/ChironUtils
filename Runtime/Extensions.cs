@@ -11,9 +11,45 @@ namespace Chiron
 {
 	public static class Extensions
 	{
-		public static T SeekComponent<T>(this Transform node, string name)
+		public static T SeekComponent<T>(this Transform node, string name, bool ignoreSelf = false) where T : MonoBehaviour
 		{
-			return node.Find(name).GetComponentInChildren<T>();
+			var self = node.Find(name);
+			if (ignoreSelf)
+			{
+				var arr = self.GetComponentsInChildren<T>();
+				foreach (var a in arr)
+				{
+					if (((MonoBehaviour)a).transform != self)
+						return a;
+				}
+				return null;
+			}
+			else
+			{
+				return self.GetComponentInChildren<T>();
+			}
+		}
+
+		public static bool Toggle(this CanvasGroup canvas)
+		{
+			var isOn = canvas.alpha > 0f;
+			canvas.Toggle(!isOn);
+			return !isOn;
+		}
+		public static void Toggle(this CanvasGroup canvas, bool value)
+		{
+			if (value)
+			{
+				canvas.alpha = 1f;
+				canvas.interactable = true;
+				canvas.blocksRaycasts = true;
+			}
+			else
+			{
+				canvas.alpha = 0f;
+				canvas.interactable = false;
+				canvas.blocksRaycasts = false;
+			}
 		}
 
 		public static string GetAbsoluteFilePath(string assetPath)
