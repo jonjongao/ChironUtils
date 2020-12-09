@@ -255,7 +255,8 @@ namespace Chiron.Skeleton
 					if (Chiron.Skeleton.Utility.IsHip((HumanBodyBones)j.type))
 						continue;
 
-				var rlt = container ? Quaternion.Inverse(container.rotation) * j.rot :
+				var t = animator.transform;
+				var rlt = t ? Quaternion.Inverse(t.rotation) * j.rot :
 					j.rot;
 				var rot = rlt * def.rot;
 				//rot.x *= flip.x;
@@ -270,7 +271,8 @@ namespace Chiron.Skeleton
 				var posDiff = pos - bone.localPosition;
 				bone.localPosition = Vector3.Lerp(bone.localPosition, pos, deltaTime);
 
-				var ch = container.GetChild(0);
+				//Guessing root transform
+				var ch = container;
 				ch.localPosition = Vector3.Lerp(ch.localPosition, targetPose.centerOffset, deltaTime);
 			}
 		}
