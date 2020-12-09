@@ -269,6 +269,9 @@ namespace Chiron.Skeleton
 
 				var posDiff = pos - bone.localPosition;
 				bone.localPosition = Vector3.Lerp(bone.localPosition, pos, deltaTime);
+
+				var ch = container.GetChild(0);
+				ch.localPosition = Vector3.Lerp(ch.localPosition, targetPose.centerOffset, deltaTime);
 			}
 		}
 

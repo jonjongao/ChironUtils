@@ -42,6 +42,8 @@ namespace Chiron.Skeleton
 		[HideInInspector]
 		public bool hasSkeleton;
 		[HideInInspector]
+		public Vector3 centerOffset;
+		[HideInInspector]
 		public float overallConf;
 		[HideInInspector]
 		public float upperConf;
@@ -102,6 +104,7 @@ namespace Chiron.Skeleton
 			this.variation = Variation.skeletonv1posture;
 			this.name = name;
 			this.hasSkeleton = true;
+			this.centerOffset = Vector3.zero;
 			this.overallConf = 1f;
 			this.upperConf = 1f;
 			this.lowerConf = 1f;
@@ -154,6 +157,7 @@ namespace Chiron.Skeleton
 			this.variation = Variation.skeletonv1posture;
 			this.name = name;
 			this.hasSkeleton = true;
+			this.centerOffset = Vector3.zero;
 			this.overallConf = 1f;
 			this.upperConf = 1f;
 			this.lowerConf = 1f;
